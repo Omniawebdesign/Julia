@@ -1,0 +1,144 @@
+#card-group {
+    text-align: center;
+    top: -50px;
+    height: 100px;
+    width: 100%;
+    position: absolute;
+}
+
+.contact-card-group {
+    display: inline-block;
+    width: 45%;
+    max-width: 45%;
+    height: 100px;
+    background: #fff;
+    position: relative;
+}
+
+.contact-card-group:nth-of-type(1) {
+    margin-right: 10px;
+}
+
+.content h2 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .39px;
+    width: 80%;
+    margin: auto;
+    font-weight: 600;
+    line-height: 16px;
+}
+
+.content h2 span {
+    color: #2D325A;
+}
+
+.content {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+}
+
+.content .line {
+    width: 56px;
+    height: 1px;
+    background: #DBB13B;
+    margin: 5px auto 0;
+}
+
+#card-group .blue-diamond {
+    display: none;
+}
+
+@media screen and (min-width: 768px) {
+
+    #card-group {
+        margin: auto;
+        text-align: center;
+        width: 100%;
+        max-width: 1280px;
+        padding: 0 10px;
+        display: block;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+                transform: translateX(-50%);
+    }
+
+    #card-group:before {
+        content: '';
+        position: absolute;
+        display: block;
+        height: 100px;
+        width: 5000px;
+        background: #304B78;
+        opacity: 1;
+        top: 50px;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+                transform: translateX(-50%)
+    }
+
+    .contact-card-group {
+        width: 49%;
+        height: 250px;
+        max-width: 630px;
+        max-height: 350px;
+        display: inline-block;
+    }
+
+    .content h2 {
+        font-size: 30px;
+        line-height: 36px;
+    }
+
+    .content h2 span {
+        display: block;
+    }
+
+    .content .line {
+        width: 100px;
+        margin-top: 10px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+    #clover-design {
+        display: none;
+    }
+
+    #card-group .blue-diamond {
+        display: block;
+        position: absolute;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+                transform: translateX(-50%);
+        top: -140px;
+        width: 90px;
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
+
+    .contact-card-group {
+        height: 350px;
+        max-width: 630px;
+    }
+
+    .contact-card-group:nth-of-type(1) {
+        margin-right: 20px;
+    }
+
+     #card-group:before {
+        height: 160px;
+    }
+    
+}
