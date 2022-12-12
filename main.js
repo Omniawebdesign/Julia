@@ -1,6 +1,5 @@
 // Make sure SW are supported//
-if
-('serviceWorker' in navigator){
+if ('serviceWorker' in navigator){
     window.addEventListener('load', ()=> {
         navigator.serviceWorker
         .register('/the_cached_site.js') 
