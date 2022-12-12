@@ -7,7 +7,7 @@ self.addEventListener("install", (event) => {
   event.waitUntil(
     addResourcesToCache([
       "/",
-      "/index.html",
+      "index.html",
       "/style.css",
       "/app.js",
       "/image-list.js",
