@@ -1,14 +1,7 @@
-let cacheVersion = 1
-let cacheName = "web-workr-cache-"+cacheVersion
-const pageToSave = "offline.html"
-
-// Installing service worker
-this.addEventListener('install', event => {
-    console.log("Installing service worker");
-  
-    event.waitUntil(caches.open(cacheName)
-    .then((openCache) => {
-        return openCache.add(pageToSave)
-    })
-    .catch(err => console.log(err)))
-})
+// Registering. Should be in the JS file contained in the html files.
+window.addEventListener('load', () => {
+    navigator.serviceWorker
+    .register('../worker.js')
+    .then(_ => console.log('Registered service worker'))
+    .catch(e => console.log('Error registering: ',e));
+});
