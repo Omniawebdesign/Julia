@@ -22,23 +22,6 @@ self.addEventListener("install", (event) => {
 
 
 
-self.addEventListener('activate', e => {
-console.log('Activation!');
+self.addEventListener("fetch", (event) => {
+  event.respondWith(caches.match(event.request));
 });
-
-
-
-
-
-// Fetching resource
-this.addEventListener('fetch', event => {
-    console.log("Fetching with service worker");
-    if(event.request.mode === 'navigate'){
-        event.respondWith(
-            fetch(event.request.url)
-            .catch(_ => {
-                return caches.match(pageToSave)
-            })
-        )
-    }
-})
