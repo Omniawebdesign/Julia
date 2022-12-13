@@ -10,7 +10,7 @@ this.addEventListener('install', event => {
   
     event.waitUntil(caches.open(cacheName)
     .then((openCache) => {
-        return openCache.add(pageToSave)
+        return openCache.addAll(pageToSave)
     })
     .catch(err => console.log(err)))
 })
