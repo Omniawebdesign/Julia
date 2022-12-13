@@ -1,11 +1,7 @@
  const cacheName = 'v1';
 
- const cacheAssets = [
-    'index.html',
-    'about.html',
-    '/css/style.css',
-    '/js/main.js'
- ];
+ const cacheAssets = 'index.html'
+   
     
  
  
