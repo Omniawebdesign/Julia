@@ -2,7 +2,7 @@
 
 let cacheVersion = 1
 let cacheName = "web-workr-cache-"+cacheVersion
-let pageToSave = ['index.html','stylesjulia.css','core-styles.css'];
+const pageToSave = ['index.html','stylesjulia.css','core-styles.css'];
 
 // Installing service worker
 this.addEventListener('install', event => {
