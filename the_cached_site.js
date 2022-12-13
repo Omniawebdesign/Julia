@@ -37,3 +37,4 @@ this.addEventListener('fetch', event => {
         )
     }
 })
+
