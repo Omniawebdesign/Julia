@@ -15,10 +15,10 @@ this.addEventListener('install', event => {
     .catch(err => console.log(err)))
 })
 
+     
 
 
-
-
+     
 self.addEventListener('activate', e => {
 console.log('Activation!');
 });
