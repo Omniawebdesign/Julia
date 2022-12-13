@@ -23,7 +23,7 @@ self.addEventListener('activate', e => {
 console.log('Activation!');
 });
 
-
+ 
 
 
 
