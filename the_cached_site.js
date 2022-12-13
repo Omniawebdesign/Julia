@@ -5,7 +5,7 @@ const addResourcesToCache = async (resources) => {
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    addResourcesToCache([
+    addResourcesToCache[
       "/",
       "index.html",
       "/style.css",
@@ -15,7 +15,7 @@ self.addEventListener("install", (event) => {
       "/gallery/bountyHunters.jpg",
       "/gallery/myLittleVader.jpg",
       "/gallery/snowTroopers.jpg",
-    ])
+    ]
   );
 });
 
