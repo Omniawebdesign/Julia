@@ -1,5 +1,9 @@
 var CACHE_NAME = "pwa-task-manager";
-var urlsToCache = ["/", "/completed"];
+var urlsToCache = [
+  
+  'index.html',
+  'juliacontact.html'
+];
 // Install a service worker
 self.addEventListener("install", (event) => {
   // Perform install steps
