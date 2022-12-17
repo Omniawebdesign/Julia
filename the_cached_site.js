@@ -1,7 +1,7 @@
 var cache_name = 'v1';
 
 var cache_files = [
-  './',
+  
   'index.html',
   'juliacontact.html'
 ]
