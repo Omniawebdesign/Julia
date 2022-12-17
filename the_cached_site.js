@@ -1,47 +1,41 @@
-var CACHE_NAME = "pwa-task-manager";
-var urlsToCache = [
+var cache_name = 'v1';
+
+var cache_files = [
   
   'index.html',
   'juliacontact.html'
-];
-// Install a service worker
-self.addEventListener("install", (event) => {
-  // Perform install steps
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(function (cache) {
-      console.log("Opened cache");
-      return cache.addAll(urlsToCache);
+]
+
+self.addEventListener('install', function(e){
+  console.log('SW install:', e);
+  e.waitUntil(
+    caches.open(cache_name)
+    .then(function(cache){
+      console.log('cache', cache);
+      return cache.addAll(cache_files);
     })
-  );
-});
-// Cache and return requests
-self.addEventListener("fetch", (event) => {
-  event.respondWith(
-    caches.match(event.request).then(function (response) {
-      // Cache hit - return response
-      if (response) {
-        return response;
-      }
-      return fetch(event.request);
+    .then(function(cache){
+      console.log('Cache completed');
     })
-  );
-});
-// Update a service worker
-self.addEventListener("activate", function (event) {
-  event.waitUntil(
-    caches.keys().then(function (cacheNames) {
-      return Promise.all(
-        cacheNames
-          .filter(function (cacheName) {
-            // Return true if you want to remove this cache,
-            // but remember that caches are shared across
-            // the whole origin
-          })
-          .map(function (cacheName) {
-            return caches.delete(cacheName);
-          })
-      );
-    })
-  );
+  )
 });
 
+self.addEventListener('activate', function(event) {
+  console.log('SW activate:', event);
+});
+
+self.addEventListener('fetch', function(e){
+  console.log('SW fetch:', e.request.url)
+
+  e.respondWith(
+    caches.match(e.request)
+    .then(function(cache_response){
+      if(cache_response) return cache_response;
+
+      return fetch(e.request);
+    })
+    .catch(function(err){
+      console.log('Cache error', err)
+    })
+  );
+});
