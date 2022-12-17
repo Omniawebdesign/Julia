@@ -1,56 +1,42 @@
-let cacheVersion = 1
-let cacheName = "web-workr-cache-"+cacheVersion
-const pageToSave = ['juliacontact.html','stylesjulia.css','core-styles.css', 'index.html'];
+var cache_name = 'v1';
 
-// Installing service worker
-this.addEventListener('install', event => {
-    console.log("Installing service worker");
-  
-    event.waitUntil(caches.open(cacheName)
-    .then((openCache) => {
-        return openCache.addAll(pageToSave)
+var cache_files = [
+  './',
+  'index.html',
+  'juliacontact.html'
+]
+
+self.addEventListener('install', function(e){
+  console.log('SW install:', e);
+  e.waitUntil(
+    caches.open(cache_name)
+    .then(function(cache){
+      console.log('cache', cache);
+      return cache.addAll(cache_files);
     })
-    .catch(err => console.log(err)))
-})
-
-     
-
-
-     
-self.addEventListener('activate', e => {
-console.log('Activation!');
+    .then(function(cache){
+      console.log('Cache completed');
+    })
+  )
 });
 
- 
+self.addEventListener('activate', function(event) {
+  console.log('SW activate:', event);
+});
 
+self.addEventListener('fetch', function(e){
+  console.log('SW fetch:', e.request.url)
 
+  e.respondWith(
+    caches.match(e.request)
+    .then(function(cache_response){
+      if(cache_response) return cache_response;
 
-// Fetching resource
-this.addEventListener('fetch', event => {
-    console.log("Fetching with service worker");
-    if(event.request.mode === 'navigate'){
-        event.respondWith(
-            fetch(event.request.url)
-            .catch(_ => {
-                return caches.match(pageToSave)
-            })
-        )
-    }
-})
-
-
-// On install, cache some stuff
-self.addEventListener('install', function (event) {
-
-	// Activate right away
-	self.skipWaiting();
-
-	// Cache your core stuff...
-	event.waitUntil(caches.open(coreID).then(function (cache) {
-		cache.add(new Request('/offline/'));
-		// ...
-		return cache;
-	}));
-
+      return fetch(e.request);
+    })
+    .catch(function(err){
+      console.log('Cache error', err)
+    })
+  );
 });
 
