@@ -39,4 +39,18 @@ this.addEventListener('fetch', event => {
 })
 
 
+// On install, cache some stuff
+self.addEventListener('install', function (event) {
+
+	// Activate right away
+	self.skipWaiting();
+
+	// Cache your core stuff...
+	event.waitUntil(caches.open(coreID).then(function (cache) {
+		cache.add(new Request('/offline/'));
+		// ...
+		return cache;
+	}));
+
+});
 
